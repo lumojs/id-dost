@@ -1,0 +1,110 @@
+{
+  "name": "id-dost",
+  "displayName": "ID Dost",
+  "description": "Friendly HTML ID validation for duplicate, empty, and whitespace-containing IDs.",
+  "version": "0.1.0",
+  "publisher": "ott-academy",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "html",
+    "id",
+    "duplicate",
+    "validator",
+    "lint"
+  ],
+  "main": "./out/src/extension.js",
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "idDost.checkDocument",
+        "title": "ID Dost: Check IDs in Current Document"
+      },
+      {
+        "command": "idDost.clearDiagnostics",
+        "title": "ID Dost: Clear Diagnostics"
+      },
+      {
+        "command": "idDost.goToOriginal",
+        "title": "ID Dost: Go to Original ID"
+      }
+    ],
+    "configuration": {
+      "title": "ID Dost",
+      "properties": {
+        "idDost.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable ID Dost validation."
+        },
+        "idDost.validateDuplicates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect duplicate IDs in a document."
+        },
+        "idDost.validateWhitespace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Reject whitespace in ID values."
+        },
+        "idDost.validateEmpty": {
+          "type": "boolean",
+          "default": true,
+          "description": "Reject empty ID values."
+        },
+        "idDost.validateDuplicateAttributes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect multiple id attributes on the same element."
+        },
+        "idDost.notifications.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show deduplicated pop-up notifications for newly detected issues. Disabled by default; editor diagnostics and inline messages remain active."
+        },
+        "idDost.notifications.cooldownMs": {
+          "type": "number",
+          "default": 30000,
+          "minimum": 0,
+          "maximum": 3600000,
+          "description": "Minimum time between pop-ups for the same issue (milliseconds)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "typecheck": "tsc --noEmit -p .",
+    "lint": "eslint src test --ext .ts",
+    "test": "npm run compile && mocha out/test/**/*.test.js",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "htmlparser2": "^9.1.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vscode/vsce": "^2.32.0",
+    "eslint": "^8.57.0",
+    "mocha": "^10.7.0",
+    "typescript": "^5.5.4"
+  }
+}
