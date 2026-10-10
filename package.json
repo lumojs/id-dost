@@ -4,7 +4,16 @@
   "description": "Friendly HTML ID validation for duplicate, empty, and whitespace-containing IDs.",
   "version": "0.1.0",
   "publisher": "ott-academy",
+  "icon": "assets/id-dost-icon.png",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lumojis/id-dost.git"
+  },
+  "homepage": "https://github.com/lumojis/id-dost#readme",
+  "bugs": {
+    "url": "https://github.com/lumojis/id-dost/issues"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
