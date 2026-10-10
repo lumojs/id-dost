@@ -100,7 +100,7 @@
     "lint": "eslint src test --ext .ts",
     "test": "npm run compile && mocha out/test/**/*.test.js",
     "vscode:prepublish": "npm run compile",
-    "package": "vsce package --no-dependencies"
+    "package": "vsce package"
   },
   "dependencies": {
     "htmlparser2": "^9.1.0"
